@@ -1,14 +1,14 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+const CelsiusToFahrenheit = (degrees) => (degrees * 9 / 5) + 32
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+const case1 = CelsiusToFahrenheit(0) === 32
+const case2 = CelsiusToFahrenheit(100) === 212
+const case3 = Math.round(CelsiusToFahrenheit(-273)) === -459
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+const test = [ case1, case2, case3 ]
+
+const testResults = test.reduce((accumulator, current, index) => {
+  return `${accumulator}
+  Case ${index} = ${current}`
+}, 'Test results')
+
+console.log(testResults)
