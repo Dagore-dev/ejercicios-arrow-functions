@@ -1,14 +1,14 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+const randomIntBetween = (min = 1, max = 100) => max > min ? Math.floor((Math.random() * max) + min) : NaN
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+const generateOneHundredUniqueRandomNumbers = () => {
+  const set = new Set()
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+  while (set.size < 100) {
+    const random = randomIntBetween(1, 1000)
+    set.add(random)
+  }
+
+  return Array.from(set)
+}
+
+console.log(generateOneHundredUniqueRandomNumbers())
