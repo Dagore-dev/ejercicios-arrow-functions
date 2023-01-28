@@ -1,14 +1,20 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+const getFibonacciSeriesUpTo = n => {
+  if (n < 1) {
+    throw new Error('Expecter an integer greater than 0')
+  }
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+  if (n === 1) {
+    return [0]
+  }
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+  const values = [0, 1]
+
+  for (let i = 2; i < n; i++) {
+    values.push(values[i - 2] + values[i - 1])
+  }
+
+  return values
+}
+
+const getTenFirstElementsOfFibonacciSerie = () => getFibonacciSeriesUpTo(10)
+console.log(getTenFirstElementsOfFibonacciSerie())
