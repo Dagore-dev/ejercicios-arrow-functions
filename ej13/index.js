@@ -1,14 +1,35 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+const isValidDNIFormat = dni => /^\d{8}[a-zA-Z]$/.test(dni)
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+const isValidDNI = dni => {
+  const array = 'TRWAGMYFPDXBNJZSQVHLCKE'
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+  const numbers = dni.substring(0, 8)
+  const letter = dni.substring(8).toUpperCase()
+  const calculatedNumber = Math.floor(Number(numbers) % 23)
+
+  if (calculatedNumber > 23) {
+    return false
+  }
+
+  const calculatedLetter = array[calculatedNumber]
+
+  return calculatedLetter === letter
+}
+
+const isNotValidDNI = dni => !isValidDNIFormat(dni) || !isValidDNI(dni)
+
+/**
+ * @param {string} dni
+ * @returns {string}
+ */
+const getDNILetter = dni => {
+  if (isNotValidDNI(dni)) {
+    return 'DNI Erróneo'
+  }
+
+  return dni.substring(8)
+}
+
+console.log(getDNILetter('32086771T'))
+console.log(getDNILetter('11111111A'))
+console.log(getDNILetter('83011627G'))
