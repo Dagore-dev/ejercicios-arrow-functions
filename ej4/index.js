@@ -1,14 +1,26 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+const createMultiplicationTable = (n) => {
+  const fragment = document.createDocumentFragment()
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+  for (let i = 0; i <= 10; i++) {
+    const li = document.createElement('li')
+    li.textContent = `${n} x ${i} = ${n * i}`
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+    fragment.appendChild(li)
+  }
+
+  const ul = document.createElement('ul')
+  ul.appendChild(fragment)
+
+  return ul
+}
+
+const printMultiplicationTable = (n, element) => {
+  const multiplicationTable = createMultiplicationTable(n)
+
+  element.appendChild(multiplicationTable)
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  printMultiplicationTable(0, document.getElementById('table-0'))
+  printMultiplicationTable(4, document.getElementById('table-4'))
+})
