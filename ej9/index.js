@@ -1,14 +1,17 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+const firstTwentyEvenNumbers = []
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+const foo = () => {
+  let i = 0
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+  while (firstTwentyEvenNumbers.length < 20) {
+    if (i % 2 === 0) {
+      firstTwentyEvenNumbers.push(i)
+    }
+
+    i++
+  }
+}
+
+foo()
+
+console.log(firstTwentyEvenNumbers)
