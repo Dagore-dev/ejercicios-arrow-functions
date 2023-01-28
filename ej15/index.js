@@ -1,14 +1,12 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+/**
+ * @param {string} str
+ */
+const reverseText = str => {
+  const splitted = str.split('')
+  const reversed = splitted.reverse()
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+  return reversed.join('')
+}
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+console.log('Hola', reverseText('Hola'))
+console.log('Hola Don Pepito, hola Don José', reverseText('Hola Don Pepito, hola Don José'))
