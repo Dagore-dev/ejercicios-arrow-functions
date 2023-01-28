@@ -1,14 +1,23 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+class Employee {
+  constructor (name, salary) {
+    this.name = name
+    this.salary = salary
+  }
+}
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+const getMaxSalaryEmployee = (employees) => {
+  let maxSalaryEmployee = new Employee('', 0)
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+  for (const employee of employees) {
+    if (employee.salary > maxSalaryEmployee.salary) {
+      maxSalaryEmployee = employee
+    }
+  }
+
+  return maxSalaryEmployee
+}
+
+const employees = [new Employee('Francisco', 20000), new Employee('María', 23000), new Employee('José Juan', 18000), new Employee('Natalia', 18000), new Employee('Alberto', 22000)]
+const maxSalaryEmployee = getMaxSalaryEmployee(employees)
+
+console.log(maxSalaryEmployee)
