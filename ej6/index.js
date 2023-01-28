@@ -1,14 +1,7 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+const numberOfArguments = (...args) => args.length
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
-
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+const array = []
+for (let i = -11; i < 0; i++) {
+  console.log(numberOfArguments(...array))
+  array.push(i)
+}
