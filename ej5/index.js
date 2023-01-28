@@ -1,14 +1,14 @@
-// Turn this functions into arrow functions
-// function ask(question, yes, no) {
-//   if (confirm(question)) yes()
-//   else no()
-// }
+const parseDecimalToBinary = n => Number(Number(n).toString(2))
 
-// ask(
-//   "Do you agree?",
-//   function () { alert("You agreed.") },
-//   function () { alert("You canceled the execution.") }
-// )
+const case1 = (parseDecimalToBinary(0) & 0b0) === 0b0
+const case2 = (parseDecimalToBinary(1) & 0b1) === 0b1
+const case3 = (parseDecimalToBinary(6) & 0b110) === 0b110
+const case4 = (parseDecimalToBinary(8) & 0b1000) === 0b1000
 
-const ask = (question, yes, no) => confirm(question) ? yes() : no()
-ask('Do you agree?', () => alert('You agreed.'), () => alert('You canceled the execution.'))
+const testCases = [case1, case2, case3, case4]
+const testResults = testCases.reduce((accumulator, current, index) => {
+  return `${accumulator}
+  Case ${index} = ${current}`
+}, 'Test results')
+
+console.log(testResults)
